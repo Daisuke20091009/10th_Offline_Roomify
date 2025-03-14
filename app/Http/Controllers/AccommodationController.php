@@ -467,6 +467,7 @@ class AccommodationController extends Controller
         return view('accommodation.search')->with('all_accommodations', $accommodations)
                                                 ->with('categories', $categories);
     }
+
     public function search_by_filters(Request $request)
     {
         $query  = $this->accommodation->query();
