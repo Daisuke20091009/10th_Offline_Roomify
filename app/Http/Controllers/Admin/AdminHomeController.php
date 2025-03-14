@@ -25,10 +25,10 @@ class AdminHomeController extends Controller
 
     public function getMonthlyBookings()
     {
-        $monthlyBookings = Booking::selectRaw("TO_CHAR(check_in_date, 'YYYY-MM') as month, COUNT(*) as reservation_count")
-    ->groupByRaw("TO_CHAR(check_in_date, 'YYYY-MM')")
-    ->orderBy('month')
-    ->get();
+        $monthlyBookings = Booking::selectRaw('DATE_FORMAT(check_in_date, "%Y-%m") as month, COUNT(*) as reservation_count')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
 
         return response()->json($monthlyBookings);
     }

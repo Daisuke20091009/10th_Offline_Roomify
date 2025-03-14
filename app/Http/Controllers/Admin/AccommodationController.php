@@ -23,7 +23,7 @@ class AccommodationController extends Controller
 
     public function index()
     {
-        $all_accommodations = $this->accommodation->with('photos')->withTrashed()->latest()->paginate(8);
+        $all_accommodations = $this->accommodation->withTrashed()->with('photos')->latest()->paginate(8);
         return view('admin.accommodation.index')->with('all_accommodations', $all_accommodations);
     }
 
